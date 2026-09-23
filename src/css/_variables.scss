@@ -1,0 +1,55 @@
+// Design tokens. Every colour, size and timing used on the page resolves to one of these.
+
+// Palette sampled from assets/background.png.
+$navy:        #16305c;
+$navy-deep:   #0d1f3d;
+$sky:         #8ecae6;
+$sky-pale:    #dceff9;
+$cream:       #f7f4ec;
+$white:       #ffffff;
+$orange:      #f28c28;
+$teal:        #2a9d8f;
+$ink:         #1c2434;
+$ink-muted:   #5a6579;
+
+// Typography
+$font-body: 'Nunito', 'Segoe UI', system-ui, sans-serif;
+$weight-regular: 400;
+$weight-semibold: 600;
+$weight-bold: 800;
+
+$text-sm:   0.875rem;
+$text-base: 1rem;
+$text-lg:   1.125rem;
+$text-xl:   1.5rem;
+$text-2xl:  2.25rem;
+$text-3xl:  4rem;
+
+// Spacing scale
+$space-xs: 0.5rem;
+$space-sm: 1rem;
+$space-md: 1.75rem;
+$space-lg: 3rem;
+$space-xl: 5rem;
+
+// Layout
+$container-width: 72rem;
+$radius: 0.75rem;
+$shadow-soft: 0 0.5rem 1.5rem rgba($navy-deep, 0.12);
+$shadow-lifted: 0 1rem 2.5rem rgba($navy-deep, 0.22);
+
+// Navbar: the shrunk height is what section scroll offsets are measured against.
+$nav-height: 5.5rem;
+$nav-height-shrunk: 3.75rem;
+
+// Motion
+$ease: cubic-bezier(0.4, 0, 0.2, 1);
+$duration: 0.3s;
+
+// Breakpoints, keyed for the respond-to() mixin.
+$breakpoints: (
+    'lg': 1200px,
+    'md': 992px,
+    'sm': 768px,
+    'xs': 576px
+);

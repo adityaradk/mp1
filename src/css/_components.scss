@@ -1,0 +1,185 @@
+@use 'variables' as v;
+@use 'mixins' as m;
+
+// Modal ----------------------------------------------------------------------
+
+.modal {
+    @include m.flex-center;
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    padding: v.$space-md;
+
+    // The display above would otherwise beat the browser's rule for [hidden].
+    &[hidden] {
+        display: none;
+    }
+}
+
+.modal__backdrop {
+    position: absolute;
+    inset: 0;
+    background-color: rgba(v.$navy-deep, 0.6);
+    animation: fade-in v.$duration v.$ease both;
+}
+
+.modal__dialog {
+    position: relative;
+    width: 100%;
+    max-width: 34rem;
+    padding: v.$space-lg;
+    border-radius: v.$radius;
+    background-color: v.$white;
+    box-shadow: v.$shadow-lifted;
+    text-align: left;
+    animation: modal-in v.$duration v.$ease both;
+}
+
+.modal__close {
+    position: absolute;
+    top: v.$space-sm;
+    right: v.$space-sm;
+    padding: v.$space-xs;
+    color: v.$ink-muted;
+    font-size: v.$text-lg;
+    line-height: 0;
+    transition: color v.$duration v.$ease;
+
+    &:hover,
+    &:focus-visible {
+        color: v.$navy;
+    }
+}
+
+.modal__title {
+    padding-right: v.$space-lg;
+    color: v.$navy;
+    font-size: v.$text-xl;
+}
+
+.modal__body {
+    margin-top: v.$space-sm;
+    color: v.$ink-muted;
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes modal-in {
+    from {
+        opacity: 0;
+        transform: translateY(1rem) scale(0.97);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+// Scroll reveal --------------------------------------------------------------
+
+// reveal.js adds .is-visible the first time an element scrolls into view.
+.reveal {
+    opacity: 0;
+    transform: translateY(2rem);
+    transition: opacity 0.7s v.$ease, transform 0.7s v.$ease;
+
+    &.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+// Staggers the About columns so they arrive one after another.
+.reveal--delay-1 {
+    transition-delay: 0.15s;
+}
+
+.reveal--delay-2 {
+    transition-delay: 0.3s;
+}
+
+// Carousel -------------------------------------------------------------------
+
+.carousel {
+    display: flex;
+    align-items: center;
+    gap: v.$space-sm;
+    margin-top: v.$space-lg;
+}
+
+.carousel__arrow {
+    @include m.flex-center;
+    flex-shrink: 0;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    background-color: v.$sky-pale;
+    color: v.$navy;
+    font-size: v.$text-lg;
+    transition: background-color v.$duration v.$ease, color v.$duration v.$ease;
+
+    &:hover,
+    &:focus-visible {
+        background-color: v.$navy;
+        color: v.$white;
+    }
+
+    @include m.respond-to('xs') {
+        width: 2.5rem;
+        height: 2.5rem;
+    }
+}
+
+// Window onto the track; only one slide's width is ever visible.
+.carousel__viewport {
+    flex: 1;
+    overflow: hidden;
+}
+
+// Slides sit in a row that is shifted by one viewport width per slide. The track
+// itself is only as wide as the viewport, so a -100% step advances exactly one
+// slide. carousel.js sets --slide-index and nothing else.
+.carousel__track {
+    --slide-index: 0;
+
+    display: flex;
+    transform: translateX(calc(var(--slide-index) * -100%));
+    transition: transform 0.5s v.$ease;
+}
+
+.slide {
+    flex: 0 0 100%;
+    padding: v.$space-lg v.$space-md;
+}
+
+.slide__quote {
+    margin: 0;
+    color: v.$navy;
+    font-size: v.$text-xl;
+    font-weight: v.$weight-semibold;
+    line-height: 1.4;
+
+    @include m.respond-to('sm') {
+        font-size: v.$text-lg;
+    }
+}
+
+.slide__author {
+    margin-top: v.$space-md;
+    color: v.$ink;
+    font-weight: v.$weight-bold;
+}
+
+.slide__role {
+    color: v.$ink-muted;
+    font-size: v.$text-sm;
+}

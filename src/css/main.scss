@@ -1,1 +1,5 @@
-/* Your SCSS here. */
+// Partials are loaded in cascade order: base first, then layout, then components.
+@use 'base';
+@use 'nav';
+@use 'sections';
+@use 'components';

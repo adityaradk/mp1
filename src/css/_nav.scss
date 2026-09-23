@@ -1,0 +1,112 @@
+@use 'variables' as v;
+@use 'mixins' as m;
+
+// Sticky bar. Height and font sizes shrink together once .is-shrunk is set by nav.js.
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    height: v.$nav-height;
+    background-color: rgba(v.$navy, 0.95);
+    box-shadow: 0 0.125rem 1rem rgba(v.$navy-deep, 0.25);
+    transition: height v.$duration v.$ease;
+
+    &.is-shrunk {
+        height: v.$nav-height-shrunk;
+
+        .navbar__brand {
+            font-size: v.$text-base;
+        }
+
+        .navbar__link {
+            font-size: v.$text-sm;
+        }
+    }
+}
+
+.navbar__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: v.$space-md;
+    height: 100%;
+    max-width: v.$container-width;
+    margin: 0 auto;
+    padding: 0 v.$space-md;
+}
+
+.navbar__brand {
+    flex-shrink: 0;
+    color: v.$white;
+    font-size: v.$text-xl;
+    font-weight: v.$weight-bold;
+    letter-spacing: -0.01em;
+    transition: font-size v.$duration v.$ease;
+
+    @include m.respond-to('xs') {
+        display: none;
+    }
+}
+
+.navbar__menu {
+    display: flex;
+    align-items: center;
+    gap: v.$space-md;
+
+    @include m.respond-to('md') {
+        gap: v.$space-sm;
+    }
+
+    @include m.respond-to('sm') {
+        gap: 0.75rem;
+    }
+}
+
+// The underline doubles as the reading-position indicator: it is scaled up on
+// hover and locked open on the link nav.js marks .is-active.
+.navbar__link {
+    position: relative;
+    display: block;
+    padding: v.$space-xs 0;
+    color: rgba(v.$white, 0.75);
+    font-size: v.$text-base;
+    font-weight: v.$weight-semibold;
+    transition: color v.$duration v.$ease, font-size v.$duration v.$ease;
+
+    @include m.respond-to('sm') {
+        font-size: v.$text-sm;
+    }
+
+    &::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 0.1875rem;
+        border-radius: 0.1875rem;
+        background-color: v.$orange;
+        transform: scaleX(0);
+        transition: transform v.$duration v.$ease;
+    }
+
+    &:hover,
+    &:focus-visible {
+        color: v.$white;
+    }
+
+    &:hover::after,
+    &:focus-visible::after {
+        transform: scaleX(0.6);
+    }
+
+    &.is-active {
+        color: v.$white;
+
+        &::after {
+            transform: scaleX(1);
+        }
+    }
+}

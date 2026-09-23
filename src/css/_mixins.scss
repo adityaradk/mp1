@@ -1,0 +1,47 @@
+@use 'sass:map';
+@use 'variables' as v;
+
+// Media query down to a named breakpoint, e.g. @include respond-to('sm') { ... }
+@mixin respond-to($name) {
+    $width: map.get(v.$breakpoints, $name);
+
+    @if $width == null {
+        @error 'Unknown breakpoint: #{$name}';
+    }
+
+    @media (max-width: $width) {
+        @content;
+    }
+}
+
+@mixin flex-center($direction: row) {
+    display: flex;
+    flex-direction: $direction;
+    align-items: center;
+    justify-content: center;
+}
+
+// Full-bleed image that stays put while the page scrolls past it.
+@mixin fixed-bg($image, $position: center) {
+    background-image: $image;
+    background-position: $position;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+// Tints a fixed background so foreground text keeps its contrast.
+@mixin overlay($color, $opacity) {
+    position: relative;
+
+    &::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background-color: rgba($color, $opacity);
+    }
+
+    > * {
+        position: relative;
+    }
+}

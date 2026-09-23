@@ -4,10 +4,265 @@
         <meta charset="utf-8" />
         <meta http-equiv="x-ua-compatible" content="ie=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>MP1</title>
+        <meta name="description" content="Bob's 10-in-1: shampoo, conditioner, moisturizer, sunscreen, toothpaste, mouthwash, shaving cream, skin toner, foot cream, and mayonnaise in a single bottle.">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;800&display=swap" rel="stylesheet">
+        <title>Bob's 10-in-1</title>
     </head>
     <body>
-        <h1>Hello World! Welcome to MP1!</h1>
-        <img src="assets/image.jpg">
+        <!--
+            Icon sprite. Every <use href="#icon-..."> on the page points at one of these symbols.
+            Icons: Font Awesome Free 6.7.2 (CC BY 4.0) - https://fontawesome.com
+        -->
+        <svg class="sprite" aria-hidden="true">
+            <symbol id="icon-user" viewBox="0 0 448 512">
+                <path d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512l388.6 0c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304l-91.4 0z"/>
+            </symbol>
+            <symbol id="icon-map" viewBox="0 0 576 512">
+                <path d="M408 120c0 54.6-73.1 151.9-105.2 192c-7.7 9.6-22 9.6-29.6 0C241.1 271.9 168 174.6 168 120C168 53.7 221.7 0 288 0s120 53.7 120 120zm8 80.4c3.5-6.9 6.7-13.8 9.6-20.6c.5-1.2 1-2.5 1.5-3.7l116-46.4C558.9 123.4 576 135 576 152l0 270.8c0 9.8-6 18.6-15.1 22.3L416 503l0-302.6zM137.6 138.3c2.4 14.1 7.2 28.3 12.8 41.5c2.9 6.8 6.1 13.7 9.6 20.6l0 251.4L32.9 502.7C17.1 509 0 497.4 0 480.4L0 209.6c0-9.8 6-18.6 15.1-22.3l122.6-49zM327.8 332c13.9-17.4 35.7-45.7 56.2-77l0 249.3L192 449.4 192 255c20.5 31.3 42.3 59.6 56.2 77c20.5 25.6 59.1 25.6 79.6 0zM288 152a40 40 0 1 0 0-80 40 40 0 1 0 0 80z"/>
+            </symbol>
+            <symbol id="icon-question" viewBox="0 0 512 512">
+                <path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM169.8 165.3c7.9-22.3 29.1-37.3 52.8-37.3l58.3 0c34.9 0 63.1 28.3 63.1 63.1c0 22.6-12.1 43.5-31.7 54.8L280 264.4c-.2 13-10.9 23.6-24 23.6c-13.3 0-24-10.7-24-24l0-13.5c0-8.6 4.6-16.5 12.1-20.8l44.3-25.4c4.7-2.7 7.6-7.7 7.6-13.1c0-8.4-6.8-15.1-15.1-15.1l-58.3 0c-3.4 0-6.4 2.1-7.5 5.3l-.4 1.2c-4.4 12.5-18.2 19-30.6 14.6s-19-18.2-14.6-30.6l.4-1.2zM224 352a32 32 0 1 1 64 0 32 32 0 1 1 -64 0z"/>
+            </symbol>
+            <symbol id="icon-chevron-left" viewBox="0 0 320 512">
+                <path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l192 192c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256 246.6 86.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-192 192z"/>
+            </symbol>
+            <symbol id="icon-chevron-right" viewBox="0 0 320 512">
+                <path d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256 73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z"/>
+            </symbol>
+            <symbol id="icon-close" viewBox="0 0 384 512">
+                <path d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"/>
+            </symbol>
+            <symbol id="icon-facebook" viewBox="0 0 512 512">
+                <path d="M512 256C512 114.6 397.4 0 256 0S0 114.6 0 256C0 376 82.7 476.8 194.2 504.5V334.2H141.4V256h52.8V222.3c0-87.1 39.4-127.5 125-127.5c16.2 0 44.2 3.2 55.7 6.4V172c-6-.6-16.5-1-29.6-1c-42 0-58.2 15.9-58.2 57.2V256h83.6l-14.4 78.2H287V510.1C413.8 494.8 512 386.9 512 256h0z"/>
+            </symbol>
+            <symbol id="icon-twitter" viewBox="0 0 512 512">
+                <path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"/>
+            </symbol>
+            <symbol id="icon-instagram" viewBox="0 0 448 512">
+                <path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/>
+            </symbol>
+            <symbol id="icon-youtube" viewBox="0 0 576 512">
+                <path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"/>
+            </symbol>
+        </svg>
+
+        <nav id="navbar" class="navbar">
+            <div class="navbar__inner">
+                <a class="navbar__brand" href="#home">Bob's 10-in-1</a>
+                <ul class="navbar__menu">
+                    <li><a class="navbar__link" href="#home">Home</a></li>
+                    <li><a class="navbar__link" href="#functionality">Functionality</a></li>
+                    <li><a class="navbar__link" href="#about">About</a></li>
+                    <li><a class="navbar__link" href="#guarantee">Guarantee</a></li>
+                    <li><a class="navbar__link" href="#reviews">Reviews</a></li>
+                    <li><a class="navbar__link" href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <header id="home" class="stripe hero">
+            <div class="hero__content">
+                <h1 class="hero__title">Bob's 10-in-1</h1>
+                <p class="hero__tagline">Your one-stop shop for all things personal hygiene</p>
+            </div>
+        </header>
+
+        <main>
+            <section id="functionality" class="stripe functionality">
+                <div class="container">
+                    <h2 class="section__title">Ten jobs, one bottle</h2>
+                    <p class="section__lead">Tap any job to read what the bottle does about it.</p>
+
+                    <ul class="tiles">
+                        <li>
+                            <button class="tile" type="button">
+                                <span class="tile__name">Shampoo</span>
+                                <span class="tile__teaser">Clean hair</span>
+                                <span class="tile__detail" hidden>A dense, sudsy lather that lifts a week of city grime out of the roots without stripping the natural oils your scalp spent all that effort making. Works in hard water, soft water, and the water in Kansas.</span>
+                            </button>
+                        </li>
+                        <li>
+                            <button class="tile" type="button">
+                                <span class="tile__name">Conditioner</span>
+                                <span class="tile__teaser">Soft hair</span>
+                                <span class="tile__detail" hidden>The same pour that washed your hair thirty seconds ago now conditions it, because the formula is smart enough to know what it already did. Leaves strands smooth, weightless, and noticeably easier to argue with.</span>
+                            </button>
+                        </li>
+                        <li>
+                            <button class="tile" type="button">
+                                <span class="tile__name">Moisturizer</span>
+                                <span class="tile__teaser">Soft skin</span>
+                                <span class="tile__detail" hidden>Sinks in within seconds and holds moisture for a full sixteen hours, so elbows, knuckles, and shins stop looking like a topographic map. Non-greasy, unscented, and safe to apply immediately before shaking someone's hand.</span>
+                            </button>
+                        </li>
+                        <li>
+                            <button class="tile" type="button">
+                                <span class="tile__name">Sunscreen</span>
+                                <span class="tile__teaser">Blocked rays</span>
+                                <span class="tile__detail" hidden>Broad-spectrum SPF 50 that goes on clear instead of leaving you chalk-white at the beach. Water resistant for eighty minutes, which is roughly seventy-five minutes longer than anyone actually stays in the ocean.</span>
+                            </button>
+                        </li>
+                        <li>
+                            <button class="tile" type="button">
+                                <span class="tile__name">Toothpaste</span>
+                                <span class="tile__teaser">Clean teeth</span>
+                                <span class="tile__detail" hidden>Fluoride, a gentle polishing agent, and a mint note that reads as "fresh" rather than "industrial." Dentist approved, assuming your dentist has not read the rest of this list.</span>
+                            </button>
+                        </li>
+                        <li>
+                            <button class="tile" type="button">
+                                <span class="tile__name">Mouthwash</span>
+                                <span class="tile__teaser">Fresh breath</span>
+                                <span class="tile__detail" hidden>Swish for thirty seconds and the formula handles everything brushing missed, including the garlic decision you made at lunch. Alcohol-free, so it cleans your mouth without setting fire to it.</span>
+                            </button>
+                        </li>
+                        <li>
+                            <button class="tile" type="button">
+                                <span class="tile__name">Shaving cream</span>
+                                <span class="tile__teaser">Smooth shave</span>
+                                <span class="tile__detail" hidden>Whips into a cushioned lather that lets the blade glide instead of drag, which is the entire difference between a shave and a regret. Rinses clean off the razor in one pass under the tap.</span>
+                            </button>
+                        </li>
+                        <li>
+                            <button class="tile" type="button">
+                                <span class="tile__name">Skin toner</span>
+                                <span class="tile__teaser">Even tone</span>
+                                <span class="tile__detail" hidden>Balances your skin back to its preferred pH after everything else in this bottle has had a turn. Tightens the look of pores and takes the shine off a forehead that has been through a lot today.</span>
+                            </button>
+                        </li>
+                        <li>
+                            <button class="tile" type="button">
+                                <span class="tile__name">Foot cream</span>
+                                <span class="tile__teaser">Happy feet</span>
+                                <span class="tile__detail" hidden>A thicker application for heels that have quietly become a structural concern. Softens hard skin overnight and neutralizes odor at the source, so your shoes stop being a topic of conversation.</span>
+                            </button>
+                        </li>
+                        <li>
+                            <button class="tile" type="button">
+                                <span class="tile__name">Mayonnaise</span>
+                                <span class="tile__teaser">On sandwiches</span>
+                                <span class="tile__detail" hidden>Creamy, tangy, and spreadable straight from the pump. We are aware of how this looks next to the other nine. Our legal team asks that you keep a separate bottle for the kitchen, and our marketing team asks that you do not.</span>
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="about" class="stripe about">
+                <div class="container">
+                    <h2 class="section__title">About us</h2>
+
+                    <div class="columns">
+                        <article class="column reveal">
+                            <svg class="icon column__icon" aria-hidden="true"><use href="#icon-user"/></svg>
+                            <h3 class="column__title">Who are we</h3>
+                            <p>Bob's 10-in-1 is a family-run business for 15 generations. We noticed how people were buying 10 products for 10 things and decided to make it one product that does everything.</p>
+                        </article>
+                        <article class="column reveal reveal--delay-1">
+                            <svg class="icon column__icon" aria-hidden="true"><use href="#icon-map"/></svg>
+                            <h3 class="column__title">Where are we</h3>
+                            <p>Bob's 10-in-1 is in every store in America, except in Kansas and at some Chipotle locations.</p>
+                        </article>
+                        <article class="column reveal reveal--delay-2">
+                            <svg class="icon column__icon" aria-hidden="true"><use href="#icon-question"/></svg>
+                            <h3 class="column__title">The future</h3>
+                            <p>Bob's son, Bob is proud to carry on the family legacy. Our new products include an 11-in-one which will soon be usable as engine oil.</p>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <section id="guarantee" class="stripe guarantee">
+                <p class="guarantee__text">
+                    Satisfaction or your money back
+                    <span class="guarantee__fine">(100% return fee applies)</span>
+                </p>
+            </section>
+
+            <section id="reviews" class="stripe reviews">
+                <div class="container">
+                    <h2 class="section__title">What people are saying</h2>
+
+                    <div class="carousel">
+                        <button class="carousel__arrow carousel__arrow--prev" type="button" aria-label="Previous review">
+                            <svg class="icon" aria-hidden="true"><use href="#icon-chevron-left"/></svg>
+                        </button>
+
+                        <div class="carousel__viewport">
+                            <ul class="carousel__track">
+                                <li class="slide">
+                                    <blockquote class="slide__quote">I threw out nine bottles and my shower has never felt so open. My wife says the bathroom looks like a hotel now. A nice one.</blockquote>
+                                    <p class="slide__author">Marguerite Vance</p>
+                                    <p class="slide__role">Verified buyer, Tulsa</p>
+                                </li>
+                                <li class="slide">
+                                    <blockquote class="slide__quote">Bought it for the sunscreen, stayed for the mayonnaise. I have made four sandwiches in the shower and I regret none of them.</blockquote>
+                                    <p class="slide__author">Desmond Achebe</p>
+                                    <p class="slide__role">Verified buyer, Baltimore</p>
+                                </li>
+                                <li class="slide">
+                                    <blockquote class="slide__quote">I drove to Missouri for this. Twice. Kansas does not know what it is missing and frankly that is Kansas's problem.</blockquote>
+                                    <p class="slide__author">Priya Raghunathan</p>
+                                    <p class="slide__role">Verified buyer, Topeka</p>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <button class="carousel__arrow carousel__arrow--next" type="button" aria-label="Next review">
+                            <svg class="icon" aria-hidden="true"><use href="#icon-chevron-right"/></svg>
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <section id="thanks" class="stripe thanks">
+                <video class="thanks__video" src="assets/thank_you.mp4" autoplay muted loop playsinline></video>
+            </section>
+        </main>
+
+        <div class="modal" hidden>
+            <div class="modal__backdrop"></div>
+            <div class="modal__dialog" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+                <button class="modal__close" type="button" aria-label="Close">
+                    <svg class="icon" aria-hidden="true"><use href="#icon-close"/></svg>
+                </button>
+                <h3 class="modal__title" id="modal-title"></h3>
+                <p class="modal__body"></p>
+            </div>
+        </div>
+
+        <footer id="contact" class="stripe footer">
+            <div class="container">
+                <p class="footer__brand">Bob's 10-in-1</p>
+                <p class="footer__line">One bottle. A brighter you.</p>
+
+                <ul class="footer__social">
+                    <li>
+                        <a class="footer__social-link" href="https://facebook.com" aria-label="Facebook">
+                            <svg class="icon" aria-hidden="true"><use href="#icon-facebook"/></svg>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="footer__social-link" href="https://x.com" aria-label="X">
+                            <svg class="icon" aria-hidden="true"><use href="#icon-twitter"/></svg>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="footer__social-link" href="https://instagram.com" aria-label="Instagram">
+                            <svg class="icon" aria-hidden="true"><use href="#icon-instagram"/></svg>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="footer__social-link" href="https://youtube.com" aria-label="YouTube">
+                            <svg class="icon" aria-hidden="true"><use href="#icon-youtube"/></svg>
+                        </a>
+                    </li>
+                </ul>
+
+                <p class="footer__legal">&#127279; 2026 Bob's 10-in-1 &mdash; copyleft, copy freely.</p>
+            </div>
+        </footer>
     </body>
 </html>
